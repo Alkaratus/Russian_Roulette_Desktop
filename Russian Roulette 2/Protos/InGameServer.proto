@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+option csharp_namespace = "Russian_Roulette";
+
+package Russian_Roulette;
+
+service InGameServer{
+  rpc select_player(InGame_Selected_Player)returns(InGame_Empty_Message){}
+  rpc get_answer(InGame_Selected_Answer)returns(InGame_Empty_Message){}
+  rpc get_text_answer(InGame_Text_Answer)returns(InGame_Empty_Message){}
+  rpc trigger_roulette(InGame_Empty_Message)returns(InGame_Empty_Message){}
+  rpc decide_in_final(InGame_Decision_In_Final)returns(InGame_Empty_Message){}
+}
+
+message InGame_Selected_Player{
+  uint32 id=1;
+}
+
+message InGame_Selected_Answer{
+  uint32 id=1;
+}
+
+message InGame_Text_Answer{
+  string answer=1;
+}
+
+message InGame_Decision_In_Final{
+  bool continue=1;
+}
+
+message InGame_Empty_Message{
+
+}

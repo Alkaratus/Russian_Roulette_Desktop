@@ -1,0 +1,126 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "Russian_Roulette";
+
+package Russian_Roulette;
+
+
+service ClientListener{
+	rpc send_player_information(Listener_Player_Data) returns (Listener_Empty_Message){};
+
+	rpc countdown(Listener_Empty_Message) returns (Listener_Empty_Message){};
+	rpc start_game(Listener_Game_Service_Port) returns (Listener_Empty_Message){};
+
+	//GameState
+	rpc start_next_round(Listener_Empty_Message) returns (Listener_Empty_Message){};
+	rpc change_round_state(Listener_Empty_Message) returns (Listener_Empty_Message){};
+	
+	//Roulette
+	rpc start_roulette(Listener_Empty_Message) returns (Listener_Empty_Message){};
+	rpc change_roulette_state(Listener_Index) returns (Listener_Empty_Message){};
+
+	rpc start_elimination_roulette(Listener_Empty_Message) returns (Listener_Empty_Message){};
+
+	//Question
+	rpc pre_question_sequence(Listener_Empty_Message)returns(Listener_Empty_Message){};
+	rpc question_data(Listener_Question_Data)returns(Listener_Empty_Message){};
+
+	//Answers
+	rpc answers_data(Listener_Answers_Data)returns(Listener_Empty_Message){};
+	rpc answer_require(Listener_Empty_Message)returns(Listener_Empty_Message){};
+	rpc mark_answer(Listener_Answer_Mark)returns(Listener_Empty_Message){};
+	rpc clear_answers(Listener_Empty_Message)returns(Listener_Empty_Message){};
+
+	//Players
+	rpc change_player_state(Listener_Choosen_Player_State)returns(Listener_Empty_Message){};
+	rpc change_player_money(Listener_Choosen_Player_Money)returns(Listener_Empty_Message){};
+	rpc eliminate_player(Listener_Index)returns(Listener_Empty_Message){};
+
+	//Timer
+	rpc start_timer(Listener_Empty_Message)returns(Listener_Empty_Message){};
+
+	//Traps
+	rpc change_one_trap(Listener_Trap_To_Change)returns(Listener_Empty_Message){};
+	rpc change_all_traps(Listener_Traps_State)returns(Listener_Empty_Message){};
+
+
+}
+
+message Listener_Player_Data{
+	uint32 id=1;
+	string name=2;
+}
+
+message Listener_Game_Service_Port{
+	int32 port=1;
+}
+
+message Listener_Question_Data{
+	string data=1;
+}
+
+message Listener_Answers_Data{
+	string answer1=1;
+	string answer2=2;
+	string answer3=3;
+	string answer4=4;
+	string answer5=5;
+}
+
+enum Player_State{
+	normal=0;
+	chosing=1;
+	answering=2;
+	enable=3;
+}
+
+message Listener_Choosen_Player_State{
+	uint32 id=1;
+	Player_State state=2;
+}
+
+message Listener_Choosen_Player_Money{
+	uint32 id=1;
+	uint32 money=2;
+}
+
+message Listener_Index{
+	uint32 id=1;
+}
+
+enum Round_State{
+	start=0;
+	questioning=1;
+	end=2;
+}
+
+enum Trap_State{
+	closed=0;
+	blue=1;
+	red=2;
+	open=3;
+}
+
+enum Answer_State{
+  marked=0;
+  wrong=1;
+  correct=2;
+}
+
+message Listener_Trap_To_Change{
+	uint32 id=1;
+	Trap_State state=2;
+}
+
+message Listener_Traps_State{
+	Trap_State state=1;
+}
+
+message Listener_Answer_Mark{
+  uint32 id=1;
+  Answer_State state=2;
+}
+
+message Listener_Empty_Message{
+  
+}

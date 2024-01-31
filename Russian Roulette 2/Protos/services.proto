@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+option csharp_namespace = "Russian_Roulette";
+
+package Russian_Roulette;
+
+// Interface exported by the server.
+service MainService {
+  
+  rpc create_game(Server_New_Game_Data) returns (Server_Game_Params) {}
+  rpc join_game(Server_New_Game_Data) returns (Server_Game_Params) {}
+  rpc get_players(Server_Game_ID) returns (Server_Players_Data){}
+}
+
+
+message Server_New_Game_Data{
+  string game_name=1;
+  string player_name=2;
+  string player_bonus_ip=3;
+  int32 player_listener_port=4;
+}
+
+message Server_Game_Params{
+  bool success=1;
+  uint32 game_id=2;
+  uint32 player_id=3;
+}
+
+message Server_Game_ID{
+  uint32 id=1;
+}
+
+message Server_Player_Data{
+  uint32 game_id=1;
+  string name=2;
+}
+
+message Server_Players_Data{
+	string player_1=2;
+	string player_2=3;
+	string player_3=4;
+	string player_4=5;
+	string player_5=6;
+	string player_6=7;
+}
+
+message Server_Empty{
+
+}

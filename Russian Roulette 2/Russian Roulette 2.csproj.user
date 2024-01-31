@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Compile Update="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="LayoutObjects\AnswerPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="LayoutObjects\ListenerResponsivePanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="LayoutObjects\PlayerPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="LayoutObjects\PreGameOfflinePlayerPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="LayoutObjects\Trap.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Layouts\CreateGame.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Layouts\GameMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Layouts\GameOverLayout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Layouts\Game_Layout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Layouts\Instruction_Layout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Layouts\JoinGame.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Layouts\Main_Menu_Layout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Layouts\Pre_Game_Online_Layout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>
